@@ -380,7 +380,7 @@ func (l *Lustre2) GetLustreProcStats(fileglob string, wanted_fields []*mapping, 
 		}
 
 		for _, line := range lines {
-			parts := strings.Fields(line)
+                        parts := strings.Fields(strings.Replace(line, ":", " ", -1))
 			if strings.HasPrefix(line, "- job_id:") {
 				// Set the job_id explicitly if present
 				fields["jobid"] = parts[2]
